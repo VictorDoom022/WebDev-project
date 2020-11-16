@@ -23,4 +23,4 @@ Route::get('/seller',  [App\Http\Controllers\SellerController::class, 'index'])-
 
 Route::get('/customer',  [App\Http\Controllers\CustomerController::class, 'index'])->name('customer')->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('auth');

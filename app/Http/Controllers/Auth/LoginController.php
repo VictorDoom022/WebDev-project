@@ -31,7 +31,7 @@ class LoginController extends Controller
         $position = Auth::user()->position; 
         switch ($position) {
           case 'admin':
-            return '/home';
+            return '/admin';
             break;
           case 'seller':
             return '/seller';
