@@ -34,7 +34,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                            @if (Auth::user()->position == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin')}}">Console</a>
+                            </li>
+                            @elseif (Auth::user()->position == 'seller')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('seller')}}">Console</a>
+                            </li>
+                            @elseif (Auth::user()->position == 'customer')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('customer')}}">Browse</a>
+                            </li>
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
