@@ -24,3 +24,5 @@ Route::get('/seller',  [App\Http\Controllers\SellerController::class, 'index'])-
 Route::get('/customer',  [App\Http\Controllers\CustomerController::class, 'index'])->name('customer')->middleware('auth');
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('auth');
+
+Route::delete('/admin/{id}', [App\Http\Controllers\AdminController::class, 'destroy']);

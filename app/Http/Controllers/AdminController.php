@@ -38,4 +38,12 @@ class AdminController extends Controller
             return view('accessDenied');
         }
     }
+
+    public function destroy($id){
+
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect('/admin');
+    }
 }

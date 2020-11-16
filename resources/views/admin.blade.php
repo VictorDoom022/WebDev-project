@@ -24,28 +24,77 @@
         <div class="col-md-10 mt-1">
             <div class="card">
                 <div class="card-header">
-                    Lists of Users
+                    Lists of Sellers
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-sm table-bordered table-hover">
                             <thead class="thead-dark">
                                 <tr>
+                                    <th>ID</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Position</th>
+                                    <th>Date Created</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>    
                             @foreach($users as $user)
+                            @if($user->position == 'seller')
                             <tr>
+                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->position }}</td>
+                                <td>{{ $user->created_at }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                    <form action="/admin/{{ $user->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
+                            @endif
+                            @endforeach
+                        </table>
+                    </div>    
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="col-md-10 mt-1">
+            <div class="card">
+                <div class="card-header">
+                    Lists of Customers
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Date Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>    
+                            @foreach($users as $user)
+                            @if($user->position == 'customer')
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->created_at }}</td>
+                                <td>
+                                    <form action="/admin/{{ $user->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endif
                             @endforeach
                         </table>
                     </div>    
