@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                <h1>This is the admin page</h1>
+                    <h1>This is the seller page</h1>
                     <h3>Welcome, {{ Auth::user()->name }}</h3>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
