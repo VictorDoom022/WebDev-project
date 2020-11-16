@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/accessDenied',  [App\Http\Controllers\AccessDeniedController::class, 'index'])->name('accessDenied');
+
 Route::get('/seller',  [App\Http\Controllers\SellerController::class, 'index'])->name('seller')->middleware('auth');
 
 Route::get('/customer',  [App\Http\Controllers\CustomerController::class, 'index'])->name('customer')->middleware('auth');

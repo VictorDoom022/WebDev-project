@@ -8,8 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                <h1>This is the admin page</h1>
-                    <h3>Welcome, {{ Auth::user()->name }}</h3>
+                    <h1>Welcome, {{ Auth::user()->name }}</h1>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -25,6 +24,7 @@
             <div class="card">
                 <div class="card-header">
                     Lists of Sellers
+                    <a class="btn btn-sm btn-success" href="{{ route('register') }}">Add Seller</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

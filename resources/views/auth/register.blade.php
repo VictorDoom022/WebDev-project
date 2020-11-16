@@ -5,7 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">
+                    {{ __('Register') }}
+                    @auth
+                        @if (Auth::user()->position == 'admin')
+                            <h3 class="text-danger">ADMIN LOGIN</h3>
+                        @else
+                            <script>window.location.href = "/accessDenied";</script>    
+                        @endif
+                    @endauth
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

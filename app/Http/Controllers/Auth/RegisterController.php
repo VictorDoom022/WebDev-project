@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -38,7 +39,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // This code only allow guest to access since we're allowing admin to access too
+        // Commenting this line must be a temporary solution
+        //$this->middleware('guest');
     }
 
     /**
@@ -64,11 +67,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'position' => 'admin',
-            'password' => Hash::make($data['password']),
-        ]);
+        if(Auth::check()){
+            $position = Auth::user()->position;
+
+            if($position == 'admin'){
+                return User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'position' => 'seller',
+                    'password' => Hash::make($data['password']),
+                ]);
+            }
+        }else{
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'position' => 'customer',
+                'password' => Hash::make($data['password']),
+            ]);
+        }
     }
 }
