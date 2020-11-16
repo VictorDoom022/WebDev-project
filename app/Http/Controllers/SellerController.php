@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SellerController extends Controller
 {
@@ -23,6 +24,13 @@ class SellerController extends Controller
      */
     public function index()
     {
-        return view('seller');
+        $position = Auth::user()->position;
+
+        if($position == 'seller'){
+            return view('seller');
+        }else{
+            return view('accessDenied');
+        }
+        
     }
 }
