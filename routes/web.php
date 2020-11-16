@@ -23,6 +23,8 @@ Route::get('/accessDenied',  [App\Http\Controllers\AccessDeniedController::class
 
 Route::get('/seller',  [App\Http\Controllers\SellerController::class, 'index'])->name('seller')->middleware('auth');
 
+Route::get('/seller/addProduct',  [App\Http\Controllers\addProductController::class, 'index'])->name('addProduct')->middleware('auth');
+
 Route::get('/customer',  [App\Http\Controllers\CustomerController::class, 'index'])->name('customer')->middleware('auth');
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('auth');

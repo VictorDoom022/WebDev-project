@@ -20,6 +20,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-8">
+            <a class="btn btn-md btn-outline-success btn-block mt-1" href="{{ route('addProduct')}}">Add Product</a>
+        </div>
     </div>
 </div>
 @endsection
