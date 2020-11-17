@@ -38,4 +38,12 @@ class SellerController extends Controller
         }
         
     }
+
+    public function destroy($id){
+
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect('seller')->with('productSavedMsg' , 'Product deleted successfully');
+    }
 }

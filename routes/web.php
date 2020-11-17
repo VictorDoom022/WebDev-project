@@ -23,6 +23,8 @@ Route::get('/accessDenied',  [App\Http\Controllers\AccessDeniedController::class
 
 Route::get('/seller',  [App\Http\Controllers\SellerController::class, 'index'])->name('seller')->middleware('auth');
 
+Route::delete('/seller/{id}',  [App\Http\Controllers\SellerController::class, 'destroy'])->middleware('auth');
+
 Route::get('/seller/addProduct',  [App\Http\Controllers\addProductController::class, 'index'])->name('addProduct')->middleware('auth');
 
 Route::get('/seller/editProduct/{id}',  [App\Http\Controllers\editProductController::class, 'show'])->name('editProduct')->middleware('auth');

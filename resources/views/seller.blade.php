@@ -65,9 +65,14 @@
                                         Quantity left: {{ $product->prdt_quantity}} <br>
                                         Last updated: {{ $product->updated_at }}
                                     </p>
-
-                                    <a class="btn btn-md btn-outline-warning" href="seller/editProduct/{{ ($product->id) }}">EDIT</a>
-                                    <a class="btn btn-md btn-outline-danger" href="#">DELETE</a>
+                                    <div class="row">
+                                        <a class="btn btn-md btn-outline-warning" href="seller/editProduct/{{ ($product->id) }}">EDIT</a>
+                                        <form action="/seller/{{ $product->id }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-md btn-outline-danger ml-1">DELETE</button>
+                                        </form> 
+                                    </div>       
                                 </div>
                             </div>
                         </div>
