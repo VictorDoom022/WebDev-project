@@ -4,6 +4,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        @if (session('productSavedMsg')!= null)
+        <div class="alert alert-success" role="alert">
+            {{ session('productSavedMsg') }}
+        </div>
+        @endif
+
+        @if (session('productSavedErrorMsg')!= null)
+        <div class="alert alert-danger" role="alert">
+            {{ session('productSavedErrorMsg') }}
+        </div>
+        @endif
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
