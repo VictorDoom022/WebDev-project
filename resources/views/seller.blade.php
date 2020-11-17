@@ -35,6 +35,39 @@
         <div class="col-md-8">
             <a class="btn btn-md btn-outline-success btn-block mt-1" href="{{ route('addProduct')}}">Add Product</a>
         </div>
+
+        <div class="col-md-12 mt-1">
+            <div class="card">
+                <div class="card-header">
+                    List of Products
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach($products as $product)
+                        <div class="col-md-4">
+                            <div class="card" >
+                                <img src="https://as1.ftcdn.net/jpg/02/44/83/32/500_F_244833214_bBmRijbyEmtKrm7Q5zdcMc4ks3tpTmVu.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        {{ $product->prdt_name }}
+                                    </h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">
+                                        Available
+                                    </h6>
+                                    <p class="card-text">
+                                        Original Price: {{ $product->prdt_oriPrice }} <br>
+                                        Selling Price: {{ $product->prdt_sellPrice }} <br>
+                                        Type: {{ $product->prdt_type}} <br>
+                                        Last updated: {{ $product->updated_at }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

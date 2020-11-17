@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class SellerController extends Controller
 {
@@ -26,8 +27,12 @@ class SellerController extends Controller
     {
         $position = Auth::user()->position;
 
+        $products = Product::latest()->get();
+        
         if($position == 'seller'){
-            return view('seller');
+            return view('seller',[
+                'products' => $products,
+            ]);
         }else{
             return view('accessDenied');
         }
