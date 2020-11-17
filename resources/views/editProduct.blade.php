@@ -61,6 +61,7 @@
                     </div>
 
                     <div class="card-footer text-right">
+                        <a class="btn btn-md btn-danger" href="/seller">Cancel</a>
                         <button type="submit" class="btn btn-md btn-primary">Submit</button>
                     </div>
                 </form>
