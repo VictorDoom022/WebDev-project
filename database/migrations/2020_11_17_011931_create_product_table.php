@@ -24,6 +24,7 @@ class CreateProductTable extends Migration
             $table->string('prdt_image')->nullable();
             $table->string('prdt_desc');
             $table->integer('prdt_available');
+            $table->string('prdt_seller');
             $table->timestamps();
         });
     }

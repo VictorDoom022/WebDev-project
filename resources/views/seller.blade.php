@@ -44,6 +44,7 @@
                 <div class="card-body">
                     <div class="row">
                         @foreach($products as $product)
+                        @if(($product->prdt_seller) == (Auth::user()->id))
                         <div class="col-md-4">
                             <div class="card" >
                                 <img src="https://as1.ftcdn.net/jpg/02/44/83/32/500_F_244833214_bBmRijbyEmtKrm7Q5zdcMc4ks3tpTmVu.jpg" class="card-img-top" alt="...">
@@ -76,6 +77,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         @endforeach
                     </div>
                 </div>

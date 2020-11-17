@@ -57,6 +57,7 @@ class AddProductController extends Controller
         }else{
             $product->prdt_available = 0;
         }
+        $product->prdt_seller = Auth::user()->id;
         
         if($product->save()){
             return redirect('/seller')->with('productSavedMsg' , 'Product saved successfully');
