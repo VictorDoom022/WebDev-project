@@ -45,6 +45,10 @@
                                 Product Image
                                 <input class="form-control form-control-sm" type="file" name="prdt_image">
                             </div>
+                            <div class="col-md-6">
+                                Availablility
+                                <input class="form-control form-control-sm" type="checkbox" name="prdt_available" value="1">
+                            </div>
                             <div class="col-md-12">
                                 Description
                                 <textarea class="form-control form-control-sm" name="prdt_desc" cols="30" rows="10"></textarea>

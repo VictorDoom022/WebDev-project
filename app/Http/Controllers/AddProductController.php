@@ -52,7 +52,12 @@ class AddProductController extends Controller
         $product->prdt_quantity = request('prdt_quantity');
         $product->prdt_image = request('prdt_image');
         $product->prdt_desc = request('prdt_desc');
-
+        if(request('prdt_available') != null){
+            $product->prdt_available = request('prdt_available');
+        }else{
+            $product->prdt_available = 0;
+        }
+        
         if($product->save()){
             return redirect('/seller')->with('productSavedMsg' , 'Product saved successfully');
         }else{

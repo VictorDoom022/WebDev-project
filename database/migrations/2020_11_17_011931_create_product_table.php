@@ -23,6 +23,7 @@ class CreateProductTable extends Migration
             $table->string('prdt_quantity');
             $table->string('prdt_image')->nullable();
             $table->string('prdt_desc');
+            $table->integer('prdt_available');
             $table->timestamps();
         });
     }

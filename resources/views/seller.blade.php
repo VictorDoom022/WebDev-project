@@ -51,13 +51,18 @@
                                     <h5 class="card-title">
                                         {{ $product->prdt_name }}
                                     </h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">
-                                        Available
-                                    </h6>
+                                    <div class="card-subtitle mb-0 text-muted">
+                                        @if ($product->prdt_available == 1)
+                                            <p class="text-success">Available</p>
+                                        @else
+                                            <p class="text-danger">Unavailable</p>
+                                        @endif
+                                    </div>
                                     <p class="card-text">
                                         Original Price: {{ $product->prdt_oriPrice }} <br>
                                         Selling Price: {{ $product->prdt_sellPrice }} <br>
                                         Type: {{ $product->prdt_type}} <br>
+                                        Quantity left: {{ $product->prdt_quantity}} <br>
                                         Last updated: {{ $product->updated_at }}
                                     </p>
                                 </div>
