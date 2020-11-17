@@ -25,6 +25,10 @@ Route::get('/seller',  [App\Http\Controllers\SellerController::class, 'index'])-
 
 Route::get('/seller/addProduct',  [App\Http\Controllers\addProductController::class, 'index'])->name('addProduct')->middleware('auth');
 
+Route::get('/seller/editProduct/{id}',  [App\Http\Controllers\editProductController::class, 'show'])->name('editProduct')->middleware('auth');
+
+Route::post('/seller/editProduct/{id}',  [App\Http\Controllers\editProductController::class, 'edit'])->name('editProduct')->middleware('auth');
+
 Route::post('/seller/addProduct',  [App\Http\Controllers\addProductController::class, 'store'])->name('addProduct')->middleware('auth');
 
 Route::get('/customer',  [App\Http\Controllers\CustomerController::class, 'index'])->name('customer')->middleware('auth');

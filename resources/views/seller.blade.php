@@ -65,6 +65,9 @@
                                         Quantity left: {{ $product->prdt_quantity}} <br>
                                         Last updated: {{ $product->updated_at }}
                                     </p>
+
+                                    <a class="btn btn-md btn-outline-warning" href="seller/editProduct/{{ ($product->id) }}">EDIT</a>
+                                    <a class="btn btn-md btn-outline-danger" href="#">DELETE</a>
                                 </div>
                             </div>
                         </div>
