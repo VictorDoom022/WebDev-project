@@ -13,4 +13,11 @@ class Product extends Model
      * @var string
      */
     protected $table = 'product';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
 }
