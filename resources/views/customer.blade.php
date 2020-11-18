@@ -26,7 +26,7 @@
                 <div class="card-header">
                     List of Products
                     <button type="button" class="btn btn-primary btn-sm">
-                        Cart <span id="cartNum" class="badge badge-light">0</span>
+                        Cart <span class="badge badge-light">0</span>
                     </button>
                 </div>
                 <div class="card-body">
@@ -55,7 +55,7 @@
                                 </p>
 
                                 <div class="text-right">
-                                    <button onclick="addChart(this.value)" id="cartButton" value="{{ $product->id }}" class="btn btn-md btn-outline-primary">Add to Cart</button>
+                                    <button href="#" class="btn btn-md btn-outline-primary">Add to Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -68,12 +68,4 @@
         </div>
     </div>
 </div>
-<script>
-    function addChart(id){
-        count = 0;
-        count++;
-        cartLogoNum = document.getElementById("cartNum");
-        cartLogoNum.innerHTML = count;
-    }
-</script>
 @endsection
