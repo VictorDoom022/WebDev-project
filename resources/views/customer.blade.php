@@ -51,24 +51,24 @@
                                 <div class="row">
                                     <div class="col-md-12 d-flex">
                                         <p>Price:</p>
-                                        <p>{{ $product->prdt_sellPrice }}</p>
+                                        <p id="prdt_sellPrice">{{ $product->prdt_sellPrice }}</p>
                                     </div>
                                     <div class="col-md-12 d-flex">
                                         <p>Type:</p>
-                                        <p>{{ $product->prdt_type }}</p>
+                                        <p id="prdt_type">{{ $product->prdt_type }}</p>
                                     </div>
                                     <div class="col-12 d-flex">
                                         <p>Quantity left:</p>
-                                        <p>{{ $product->prdt_quantity }}</p>
+                                        <p id="prdt_quantity">{{ $product->prdt_quantity }}</p>
                                     </div>
                                     <div class="col-md-12 d-flex">
                                         <p>Description:</p>
-                                        <p>{{ $product->prdt_description }}</p>
+                                        <p id="prdt_description">{{ $product->prdt_description }}</p>
                                     </div>
                                 </div>                            
 
                                 <div class="text-right">
-                                    <button onclick="addChart(this.value)" id="cartButton" value="{{ $product->id }}" class="btn btn-md btn-outline-primary">Add to Cart</button>
+                                    <button onclick="addChart({{ $product->id }}, {{ $product->prdt_quantity }})" id="addCartButton_{{ $product->id }}" value="{{ $product->id }}" class="btn btn-md btn-outline-primary">Add to Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -83,8 +83,23 @@
 </div>
 <script>
     count = 0;
-    function addChart(id){
-        count++;
+    var chartItems = [];
+    function addChart(id, prdt_quantity){
+        
+        if(prdt_quantity > 1){
+            var addChartDate = new Date();
+            var date = addChartDate.getFullYear() + '/' + addChartDate.getMonth() + '/' +addChartDate.getDate() + '-' + addChartDate.getHours() + ':' + addChartDate.getMinutes();
+            count++;
+            var productChartDetails = {
+                prdt_id : id,
+                addChartDate : date
+            };
+            chartItems.push(productChartDetails);
+        }else{
+            addCartButton = document.getElementById('addCartButton_'+id);
+            addCartButton.disabled = true;
+        }
+        console.log(chartItems);
         cartLogoNum = document.getElementById("cartNum");
         cartLogoNum.innerHTML = count;
  
