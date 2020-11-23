@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-header">
                     List of Products
-                    <button type="button" class="btn btn-primary btn-sm">
+                    <button onclick="redirectCart()" type="button" class="btn btn-primary btn-sm">
                         Cart <span id="cartNum" class="badge badge-light">0</span>
                     </button>
                 </div>
@@ -87,12 +87,12 @@
     function addChart(id, prdt_quantity){
         
         if(prdt_quantity > 1){
-            var addChartDate = new Date();
-            var date = addChartDate.getFullYear() + '/' + addChartDate.getMonth() + '/' +addChartDate.getDate() + '-' + addChartDate.getHours() + ':' + addChartDate.getMinutes();
+            var addCartDate = new Date();
+            var date = addCartDate.getFullYear() + '/' + addCartDate.getMonth() + '/' +addCartDate.getDate() + '-' + addCartDate.getHours() + ':' + addCartDate.getMinutes();
             count++;
             var productChartDetails = {
                 prdt_id : id,
-                addChartDate : date
+                addCartDate : date
             };
             chartItems.push(productChartDetails);
         }else{
@@ -105,6 +105,23 @@
  
     }
 
+    function redirectCart(){
+        console.log(chartItems);
+        if (chartItems.length !=0) {
+            let Cartdata = JSON.stringify(chartItems);
+            
+            $.ajax({
+                url: "/customer/viewCart",
+                type: "POST",
+                data: { cartData:Cartdata, _token: '{{csrf_token()}}'},
+                success: function(response){
+                    console.log("success");
+                    window.location.href = "/customer/viewCart";
+                }
+            }
+           );
+        }
+    }
     
 </script>
 @endsection

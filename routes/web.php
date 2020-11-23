@@ -33,6 +33,10 @@ Route::post('/seller/addProduct',  [App\Http\Controllers\addProductController::c
 
 Route::get('/customer',  [App\Http\Controllers\CustomerController::class, 'index'])->name('customer')->middleware('auth');
 
+Route::get('/customer/viewCart',  [App\Http\Controllers\ViewCartController::class, 'index'])->name('viewCart')->middleware('auth');
+
+Route::post('/customer/viewCart',[App\Http\Controllers\ViewCartController::class, 'store'])->name('viewCart')->middleware('auth');
+
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin')->middleware('auth');
 
 Route::delete('/admin/{id}', [App\Http\Controllers\AdminController::class, 'destroy']);
